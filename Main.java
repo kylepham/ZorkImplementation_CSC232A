@@ -5,9 +5,10 @@ class Main {
         System.out.println(it.toString());
         Location m = new Location("House", "Pikachu");
         System.out.println(m.getNameLocal());
-        m.addItem("Pikachu");
-        m.addItem("Ash");
-        m.addItem("Bê đê");
-        System.out.println(m.removeItem("Pikachu"));
+        Item it1 = new Item("Knife", "Tool", "ABCD");
+        m.addItem(it);
+        m.addItem(it1);
+        System.out.println(m.numItems());
+        System.out.println(m.getName("Tool"));
     }
 }

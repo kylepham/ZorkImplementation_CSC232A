@@ -2,11 +2,18 @@ class Item
 {
     private String name, type, description;
 
-    Item(String name, String type, String description)
+    public Item(String name, String type, String description)
     {
         this.name = name;
         this.type = type;
         this.description = description;
+    }
+
+    public Item(Item item)
+    {
+        this.name = item.name;
+        this.type = item.type;
+        this.description = item.description;
     }
 
     public String getName()

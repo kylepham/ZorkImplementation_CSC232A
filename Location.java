@@ -1,88 +1,80 @@
 import java.util.ArrayList;
 class Location
 {
-  /* Bu's work */
-  private String nameLocal, description;
-  private ArrayList<String> items;
+	private String nameLocal, description;
+	private ArrayList<Item> items;
 
-    public Location(String pnameLocal, String pdescription)
+    public Location(String nameLocal, String description)
     {
-        nameLocal = pnameLocal;
-        description = pdescription;
-        items = new ArrayList<String>();
+        this.nameLocal = nameLocal;
+        this.description = description;
+        items = new ArrayList<Item>();
     } 
 
     // Accessor for the name
     public String getNameLocal()
     {
-        return nameLocal;
+        return this.nameLocal;
     }
 
     // Accessor for the description
     public String getDescription()
     {
-        return description;
+        return this.description;
     }
 
     // Mutator for the name
-    public void setNameLocal(String pnameLocal)
+    public void setNameLocal(String nameLocal)
     {
-        nameLocal = pnameLocal;
+        this.nameLocal = nameLocal;
     }
 
     // Mutator for the description
-    public void setDescription(String pdescription)
+    public void setDescription(String description)
     {
-        description = pdescription;
+        this.description = description;
     }
 
     //Add i to the items ArrayList
-    public void addItem(String i)
+    public void addItem(Item i)
     {
-        items.add(i);
+        this.items.add(i);
     }
 
-    //Check the items in the ArrayList - T eo bik ong co cho xai built-in function ko nha
+    //Check the items in the ArrayList
     public boolean hasItem(String i)
     {
-        return items.contains(i);
+        for (Item item: this.items)
+            if (item.getName().equals(i))
+				return true;
+		return false;
     }
 
     //Return the item from the list
     public String getItem(String i)
     {
-        int n = 0;
-        while(items.get(n).isEmpty() == false)
-        {
-            if(i == items.get(n))
-            {
-                return items.get(n);
-            }
-            else
-            {
-                n = n+1;
-            }
-        }
+        for (Item item: this.items)
+            if (item.getName().equals(i))
+                return item.getName();
         return null;
     }
 
     //Count the available items in the list
     public int numItems()
     {
-        int count = 1;
-        int n = 0;
-        while(items.get(n).isEmpty() == false)
-        {
-            count = count + 1;
-            n = n + 1;
-        }
-        return count;
+        return this.items.size();
     }
 
-    //Remove items from the list - cái return items object t ko chắc nha
-    public ArrayList<String> removeItem(String i)
+    //Remove items from the list
+    public Item removeItem(String i)
     {
-        items.remove(i);
-        return items;
+        for (Item item: this.items)
+            if (item.getName().equals(i))
+            {
+                Item ret = new Item(item); // copy constructor
+                this.items.remove(item);
+				return ret;
+			}
+		return null;
     }
 }
