@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 class Location
 {
-    private String nameLocal, description;
+    private String name, description;
 	private ArrayList<Item> items;
 
-    public Location(String nameLocal, String description)
+    public Location(String name, String description)
     {
-        this.nameLocal = nameLocal;
+        this.name = name;
         this.description = description;
         items = new ArrayList<Item>();
     } 
 
     // Accessor for the name
-    public String getNameLocal()
+    public String getName()
     {
-        return this.nameLocal;
+        return this.name;
     }
 
     // Accessor for the description
@@ -24,9 +24,9 @@ class Location
     }
 
     // Mutator for the name
-    public void setNameLocal(String nameLocal)
+    public void setName(String name)
     {
-        this.nameLocal = nameLocal;
+        this.name = name;
     }
 
     // Mutator for the description
@@ -44,8 +44,9 @@ class Location
     //Check the items in the ArrayList
     public boolean hasItem(String i)
     {
+        i = i.toLowerCase();
         for (Item item: this.items)
-            if (item.getName().equals(i))
+            if (item.getName().toLowerCase().equals(i))
                 return true;
 		return false;
     }
@@ -53,8 +54,9 @@ class Location
     //Return the item from the list
     public Item getItem(String i)
     {
+        i = i.toLowerCase();
         for (Item item: this.items)
-            if (item.getName().equals(i))
+            if (item.getName().toLowerCase().equals(i))
                 return item;
         return null;
     }
@@ -76,5 +78,11 @@ class Location
 				return ret;
 			}
 		return null;
+    }
+
+    public void printItems()
+    {
+        for (Item item: this.items)
+			System.out.println("+ " + item.getName());
     }
 }
