@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 class Location
 {
-	private String nameLocal, description;
+    private String nameLocal, description;
 	private ArrayList<Item> items;
 
     public Location(String nameLocal, String description)
@@ -46,16 +46,16 @@ class Location
     {
         for (Item item: this.items)
             if (item.getName().equals(i))
-				return true;
+                return true;
 		return false;
     }
 
     //Return the item from the list
-    public String getItem(String i)
+    public Item getItem(String i)
     {
         for (Item item: this.items)
             if (item.getName().equals(i))
-                return item.getName();
+                return item;
         return null;
     }
 
