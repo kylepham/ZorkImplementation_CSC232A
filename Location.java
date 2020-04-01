@@ -61,6 +61,12 @@ class Location
         return null;
     }
 
+    //Return the item by index
+    public Item getItem(int i)
+    {
+        return this.items.get(i);
+    }
+
     //Count the available items in the list
     public int numItems()
     {
@@ -78,11 +84,5 @@ class Location
 				return ret;
 			}
 		return null;
-    }
-
-    public void printItems()
-    {
-        for (Item item: this.items)
-			System.out.println("+ " + item.getName());
     }
 }

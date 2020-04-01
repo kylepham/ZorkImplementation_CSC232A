@@ -26,7 +26,8 @@ class Main {
             else if (command.equals("look"))
             {
                 System.out.println(loc.getName() + " - " + loc.getDescription());
-                loc.printItems();
+                for (int i = 0; i < loc.numItems(); i++)
+                    System.out.println("+ " + loc.getItem(i).getName());
             }
 
             else if (command.equals("examine"))
@@ -39,6 +40,7 @@ class Main {
                     if (item.isEmpty())
                         System.out.print("What do you want to examine? ");
                 } while (item.isEmpty());
+
                 Item it = loc.getItem(item);
                 if (it != null)
                     System.out.println(it.getName() + " - " + it.getDescription());
@@ -46,6 +48,7 @@ class Main {
                     System.out.println("Cannot find that item");
             }
 
+            // none of the above commands matched
             else
                 System.out.println("I don’t know how to do that");
         }
