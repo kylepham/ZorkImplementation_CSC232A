@@ -15,42 +15,45 @@ class Main {
         Scanner sc = new Scanner(System.in);
         
         // infinite loop
-        while (true)
+        boolean isRunning = true;
+        while (isRunning)
         {
             System.out.print("Enter command: ");
             String command = sc.next();
             
-            if (command.equals("quit"))
-                break;
-            
-            else if (command.equals("look"))
+            switch (command)
             {
-                System.out.println(loc.getName() + " - " + loc.getDescription());
-                for (int i = 0; i < loc.numItems(); i++)
-                    System.out.println("+ " + loc.getItem(i).getName());
+                case "quit":
+                    isRunning = false;
+                    break;
+
+                case "look":
+                    System.out.println(loc.getName() + " - " + loc.getDescription());
+                    for (int i = 0; i < loc.numItems(); i++)
+                        System.out.println("+ " + loc.getItem(i).getName());
+                    break;
+                
+                case "examine":
+                    String item;
+                    do
+                    {
+                        item = sc.nextLine();
+                        item = item.trim();
+                        if (item.isEmpty())
+                            System.out.print("What do you want to examine? ");
+                    } while (item.isEmpty());
+
+                    Item it = loc.getItem(item);
+                    if (it != null)
+                        System.out.println(it.getName() + " - " + it.getDescription());
+                    else
+                        System.out.println("Cannot find that item");
+                    break;
+
+                default:
+                    System.out.println("I don’t know how to do that");
+                    break;
             }
-
-            else if (command.equals("examine"))
-            {
-                String item;
-                do
-                {
-                    item = sc.nextLine();
-                    item = item.trim();
-                    if (item.isEmpty())
-                        System.out.print("What do you want to examine? ");
-                } while (item.isEmpty());
-
-                Item it = loc.getItem(item);
-                if (it != null)
-                    System.out.println(it.getName() + " - " + it.getDescription());
-                else
-                    System.out.println("Cannot find that item");
-            }
-
-            // none of the above commands matched
-            else
-                System.out.println("I don’t know how to do that");
         }
     }
 }
