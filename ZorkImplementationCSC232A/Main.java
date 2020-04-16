@@ -6,7 +6,6 @@ class Main {
 	
     public static void main(String[] args) {
     	createWorld();
-    	//
         Scanner sc = new Scanner(System.in);
         
         // infinite loop
